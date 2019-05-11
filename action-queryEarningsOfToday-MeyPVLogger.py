@@ -6,6 +6,9 @@ import requests
 
 
 def action_wrapper(hermes, intent_message):
+    current_session_id = intent_message.session_id
+    hermes.publish_continue_session(current_session_id, "Einen Moment bitte")
+
     URL = "http://192.168.2.106/php/getOverview.php"
     r = requests.get(url = URL) 
     data = r.json() 
@@ -13,7 +16,6 @@ def action_wrapper(hermes, intent_message):
 
     result_sentence = "Heute wurden {} Kilo Watt Stunden produziert".format(e)
 
-    current_session_id = intent_message.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
 
 
