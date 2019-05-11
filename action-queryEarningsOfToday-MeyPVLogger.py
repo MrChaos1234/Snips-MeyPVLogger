@@ -5,7 +5,7 @@ from hermes_python.hermes import Hermes
 
 
 def action_wrapper(hermes, intent_message):
-    result_sentence = "Dies ist ein Test"
+    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
 
     current_session_id = intent_message.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
