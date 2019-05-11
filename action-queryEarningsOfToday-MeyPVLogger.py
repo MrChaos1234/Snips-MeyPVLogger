@@ -2,10 +2,16 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
+import requests 
 
 
 def action_wrapper(hermes, intent_message):
-    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
+    URL = "http://192.168.2.106/php/getOverview.php"
+    r = requests.get(url = URL) 
+    data = r.json() 
+    e = data['e']  
+
+    result_sentence = "Heute wurden " + e + " Kilo Watt Stunden produziert"
 
     current_session_id = intent_message.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
