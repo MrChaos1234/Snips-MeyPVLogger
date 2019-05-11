@@ -11,7 +11,7 @@ def action_wrapper(hermes, intent_message):
     data = r.json() 
     e = data['e']  
 
-    result_sentence = "Heute wurden " + e + " Kilo Watt Stunden produziert"
+    result_sentence = "Heute wurden {} Kilo Watt Stunden produziert".format(e)
 
     current_session_id = intent_message.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
