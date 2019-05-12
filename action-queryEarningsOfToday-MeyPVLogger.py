@@ -3,18 +3,27 @@
 
 from hermes_python.hermes import Hermes
 import requests 
+from threading import Thread
 
+def query(url):
+    global data
+    r = requests.get(url)
+    response = r.json()
+    e = int(response['e'])
+
+    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
+
+    hermes.publish_start_session_notification("", result_sentence)
+    
+    return True
 
 def action_wrapper(hermes, intent_message):
+    URL = 'http://192.168.2.106/php/getOverview.php'
+    queryThread = Thread(target=query, args=[URL])
+    queryThread.start()
+
     current_session_id = intent_message.session_id
-    hermes.publish_continue_session(current_session_id, "Einen Moment bitte")
-
-    URL = "http://192.168.2.106/php/getOverview.php"
-    r = requests.get(url = URL) 
-    data = r.json() 
-    e = data['e']  
-
-    result_sentence = "Heute wurden {} Kilo Watt Stunden produziert".format(e)
+    result_sentence = "Einen Moment bitte"
 
     hermes.publish_end_session(current_session_id, result_sentence)
 
