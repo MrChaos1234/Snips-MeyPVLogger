@@ -29,7 +29,7 @@ def action_wrapper(hermes, intent_message):
 #    hermes.publish_end_session(intent_message.session_id, result_sentence)
     hermes.publish_end_session(intent_message.session_id, "")
 
-    time.sleep(1)
+#    time.sleep(1)
     result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
     hermes.publish_start_session_notification(intent_message.side_id, result_sentence, "")
 
