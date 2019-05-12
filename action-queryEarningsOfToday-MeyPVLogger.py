@@ -4,7 +4,6 @@
 from hermes_python.hermes import Hermes
 import requests 
 from threading import Thread
-import time
 
 
 def query(hermes, intent_message, url):
@@ -12,8 +11,6 @@ def query(hermes, intent_message, url):
     response = r.json()
     e = int(response['e'])
 
-#    time.sleep(3)
-#    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
     result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
     hermes.publish_start_session_notification(None, result_sentence, "")
     
@@ -26,14 +23,6 @@ def action_wrapper(hermes, intent_message):
 
     result_sentence = "Einen Moment bitte"
     hermes.publish_end_session(intent_message.session_id, result_sentence)
-
-#    time.sleep(2)
-#    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
-#    hermes.publish_start_session_notification(None, result_sentence, "")
-
-    
-#    hermes.publish_continue_session(current_session_id, result_sentence)
-#    hermes.publish_end_session(current_session_id, result_sentence)
 
 
 if __name__ == "__main__":
