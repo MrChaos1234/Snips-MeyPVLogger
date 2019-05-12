@@ -19,14 +19,15 @@ def query(hermes, intent_message, url):
     return True
 
 def action_wrapper(hermes, intent_message):
-    URL = 'http://192.168.2.106/php/getOverview.php'
-    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
-    queryThread.start()
+#    URL = 'http://192.168.2.106/php/getOverview.php'
+#    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
+#    queryThread.start()
 
     current_session_id = intent_message.session_id
     result_sentence = "Einen Moment bitte"
+    hermes.publish_end_session(current_session_id, result_sentence)
 
-    hermes.publish_continue_session(current_session_id, result_sentence)
+#    hermes.publish_continue_session(current_session_id, result_sentence)
 #    hermes.publish_end_session(current_session_id, result_sentence)
 
 
