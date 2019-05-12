@@ -3,13 +3,16 @@
 
 from hermes_python.hermes import Hermes
 #import requests 
-#from threading import Thread
+from threading import Thread
+import time
+
 
 def query(hermes, intent_message, url):
 #    r = requests.get(url)
 #    response = r.json()
 #    e = int(response['e'])
 #
+    time.sleep(3)
     current_session_id = intent_message.session_id
     result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
 #    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
@@ -19,9 +22,9 @@ def query(hermes, intent_message, url):
     return True
 
 def action_wrapper(hermes, intent_message):
-#    URL = 'http://192.168.2.106/php/getOverview.php'
-#    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
-#    queryThread.start()
+    URL = 'http://192.168.2.106/php/getOverview.php'
+    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
+    queryThread.start()
 
     current_session_id = intent_message.session_id
     result_sentence = "Einen Moment bitte"
