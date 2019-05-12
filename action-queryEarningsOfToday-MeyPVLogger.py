@@ -17,7 +17,7 @@ def query(hermes, intent_message, url):
     result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
 #    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
     
-    hermes.publish_start_session_notification("", result_sentence)
+    hermes.publish_start_session_notification(intent_message.side_id, result_sentence, "")
     
     return True
 
