@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-import requests 
+#import requests 
 from threading import Thread
 import time
 
