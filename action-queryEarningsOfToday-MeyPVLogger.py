@@ -15,23 +15,21 @@ def query(hermes, intent_message, url):
     time.sleep(3)
     result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
 #    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
-    
-    hermes.publish_start_session_notification(intent_message.side_id, result_sentence, "")
+    hermes.publish_start_session_notification(None, result_sentence, "")
     
     return True
 
 def action_wrapper(hermes, intent_message):
-#    URL = 'http://192.168.2.106/php/getOverview.php'
-#    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
-#    queryThread.start()
+    URL = 'http://192.168.2.106/php/getOverview.php'
+    queryThread = Thread(target=query, args=[hermes, intent_message, URL])
+    queryThread.start()
 
     result_sentence = "Einen Moment bitte"
     hermes.publish_end_session(intent_message.session_id, result_sentence)
-#    hermes.publish_end_session(intent_message.session_id, "")
 
-    time.sleep(2)
-    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
-    hermes.publish_start_session_notification(None, result_sentence, "")
+#    time.sleep(2)
+#    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
+#    hermes.publish_start_session_notification(None, result_sentence, "")
 
     
 #    hermes.publish_continue_session(current_session_id, result_sentence)
