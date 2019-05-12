@@ -5,8 +5,7 @@ from hermes_python.hermes import Hermes
 import requests 
 from threading import Thread
 
-def query(url):
-    global data
+def query(hermes, url):
     r = requests.get(url)
     response = r.json()
     e = int(response['e'])
@@ -19,7 +18,7 @@ def query(url):
 
 def action_wrapper(hermes, intent_message):
     URL = 'http://192.168.2.106/php/getOverview.php'
-    queryThread = Thread(target=query, args=[URL])
+    queryThread = Thread(target=query, args=[hermes, URL])
     queryThread.start()
 
     current_session_id = intent_message.session_id
