@@ -2,19 +2,19 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-import requests 
+#import requests 
 from threading import Thread
 import time
 
 
 def query(hermes, intent_message, url):
-    r = requests.get(url)
-    response = r.json()
-    e = int(response['e'])
-#
-#    time.sleep(3)
-#    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
-    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
+#    r = requests.get(url)
+#    response = r.json()
+#    e = int(response['e'])
+
+    time.sleep(3)
+    result_sentence = "Heute wurden 15 Kilo Watt Stunden produziert"
+#    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
     hermes.publish_start_session_notification(None, result_sentence, "")
     
     return True
