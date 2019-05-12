@@ -2,21 +2,21 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-import requests 
-from threading import Thread
+#import requests 
+#from threading import Thread
 
-def query(hermes, intent_message, url):
-    r = requests.get(url)
-    response = r.json()
-    e = int(response['e'])
-
-    current_session_id = intent_message.session_id
-    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
-    
-    hermes.publish_end_session(current_session_id, result_sentence)
+#def query(hermes, intent_message, url):
+#    r = requests.get(url)
+#    response = r.json()
+#    e = int(response['e'])
+#
+#    current_session_id = intent_message.session_id
+#    result_sentence = "Heute wurden {:d} Kilo Watt Stunden produziert".format(e)
+#    
+#    hermes.publish_end_session(current_session_id, result_sentence)
 #    hermes.publish_start_session_notification("", result_sentence)
-    
-    return True
+#    
+#    return True
 
 def action_wrapper(hermes, intent_message):
 #    URL = 'http://192.168.2.106/php/getOverview.php'
